@@ -42,7 +42,9 @@ const CreateComments = (): any => {
     } else {
       pushComments(formValues);
       reset();
-      alert("Comentario enviado exitosamente");
+      alert(
+        "Comentario enviado exitosamente, puedes verlo en la pestña 'Lista Comentarios'"
+      );
     }
   };
 
