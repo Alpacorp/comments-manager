@@ -3,7 +3,6 @@ import "./Footer.css";
 
 const Footer = () => {
   const [message, setMessage] = useState<string>("");
-  // const messageFooterApi = "http://localhost:3001/";
   const messageFooterApi =
     "https://comments-manager-server.herokuapp.com/footer";
 
