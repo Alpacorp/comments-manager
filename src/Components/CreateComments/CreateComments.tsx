@@ -43,7 +43,7 @@ const CreateComments = (): any => {
       pushComments(formValues);
       reset();
       alert(
-        "Comentario enviado exitosamente, puedes verlo en la pestña 'Lista Comentarios'"
+        "Comentario enviado exitosamente, puedes verlo en la pestaña 'Lista Comentarios'"
       );
     }
   };
