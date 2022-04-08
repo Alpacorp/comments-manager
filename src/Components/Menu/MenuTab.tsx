@@ -1,17 +1,14 @@
 import { useState } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Box from "@material-ui/core/Box";
+
 import CreateComments from "../CreateComments/CreateComments";
+import TableComments from "../TableComments/TableComments";
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
+function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -22,53 +19,51 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <>{children}</>
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 }
 
-function a11yProps(index: number) {
+function a11yProps(index: any) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
-const MenuTab = () => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+export const MenuTab = () => {
+  const classes = useStyles();
   const [value, setValue] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
 
   return (
-    <div>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+    <div className={classes.root}>
+      <AppBar position="static">
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="menu tab comments"
         >
-          <Tab label="Agregar Comentarios" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Crear comentarios" {...a11yProps(0)} />
+          <Tab label="Lista comentarios" {...a11yProps(1)} />
         </Tabs>
-      </Box>
+      </AppBar>
       <TabPanel value={value} index={0}>
         <CreateComments />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+        <TableComments />
       </TabPanel>
     </div>
   );
 };
-
-export default MenuTab;
