@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: left;
   justify-content: space-around;
+  margin-block-end: 150px;
 }
 
 .create-form .label-textarea {
@@ -33,4 +34,10 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .create-form form {
+    width: 100%;
+  }
 }
